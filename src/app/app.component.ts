@@ -10,6 +10,10 @@ import { Llegada } from './model/llegada';
 export class AppComponent implements OnInit{
   title = 'proyecto';
   resp: Llegada[] = [];
+  carril1 : Llegada[]=[];
+  carril2 : Llegada[]=[];
+  carril3 : Llegada[]=[];
+
   constructor(private llegadaService:LlegadaService ){
 
   }
@@ -22,7 +26,9 @@ export class AppComponent implements OnInit{
             ...res.doc.data()
           } as Llegada;
          } );
-        this.resp = this.resp.filter(resp => resp.estado === 'pendiente');
+        this.carril1 = this.resp.filter(resp => resp.estado === 'pendiente' && resp.carril === 'Carril 1');
+        this.carril2 = this.resp.filter(resp => resp.estado === 'pendiente' && resp.carril === 'Carril 2');
+        this.carril3 = this.resp.filter(resp => resp.estado === 'pendiente' && resp.carril === 'Carril 3');
         console.log(this.resp);
       }
     );
