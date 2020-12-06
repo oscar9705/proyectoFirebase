@@ -1,21 +1,65 @@
-<h1>Pickup school</h1>
-<div class="row align-items-center border border-primary">
-    <div class="col">
-        <h2>Carril 1</h2>
-        <div class="row align-items-center">
-            pruebas
+<div class="container" *ngIf="todo.length > 1">
+    <h1>Proyecto</h1>
+    <div class="row align-items-center border border-black">
+        <div  class="col-4 ">
+            <h2>Carril 1</h2>
+            
+        </div>
+        
+        <div class="col-4 ">
+            <h2>Carril 2</h2>
+            
+        </div>
+        <div class="col-4 ">
+            <h2>Carril 3</h2>   
         </div>
     </div>
-    <div class="col">
-        <h2>Carril 2</h2>
-        <div class="row align-items-center">
-            pruebas
-        </div>
+    <div class="row border border-1 border-dark" *ngFor="let item of todo; let i= index">
+        <div class="col-4 border border-2 border-dark" *ngFor="let prueba of item; let j = index">
+            <p *ngIf="prueba === undefined"> está libre</p>
+            <div *ngIf="prueba !== undefined" class="container">
+                <p *ngFor="let alumno of prueba.alumnos" [ngClass]="{'bg-warning': clasificarAlumnoPreescolar(alumno.seccion), 'bg-danger': clasificarAlumnoPrimaria(alumno.seccion),  'bg-success': clasificarAlumnoBachillerato(alumno.seccion)}">
+                    {{alumno.nombre}} 
+                </p>
+            </div>
+        </div>    
     </div>
-    <div class="col">
-        <h2>Carril 3</h2>
-        <div class="row align-items-center">
-            pruebas
+    <!-- <div class="row border black-border" *ngFor="let pr of prueba">
+        <div class="col-4" *ngIf="pr.carril1 === undefined ">
+            <p class="text">está libre</p>
         </div>
-    </div>
-</div>
+        <div class="col-4" *ngIf="pr.carril1 !== undefined ">
+            <div class="row" *ngFor="let item of pr.carril1" >
+                <p *ngFor="let alumno of item.alumnos" class="text" [ngClass]="{'bg-warning': clasificarAlumnoPreescolar(alumno.seccion), 'bg-danger': clasificarAlumnoPrimaria(alumno.seccion),  'bg-success': clasificarAlumnoBachillerato(alumno.seccion)}">
+                    {{alumno.nombre}} {{alumno.seccion}}
+                    
+                </p>
+            </div>
+            
+        </div>
+        <div class="col-4" *ngIf="pr.carril2 === undefined ">
+            <p class="text">está libre</p>
+        </div>
+        <div class="col-4" *ngIf="pr.carril2 !== undefined ">
+            <div class="row" *ngFor="let item of pr.carril2" >
+                <p *ngFor="let alumno of item.alumnos" class="text" [ngClass]="{'bg-warning': clasificarAlumnoPreescolar(alumno.seccion), 'bg-danger': clasificarAlumnoPrimaria(alumno.seccion),  'bg-success': clasificarAlumnoBachillerato(alumno.seccion)}">
+                    {{alumno.nombre}} {{alumno.seccion}}
+                </p>
+            </div>
+            
+        </div>
+        <div class="col-4" *ngIf="pr.carril3 === undefined ">
+            <p class="text">está libre</p>
+        </div>
+        <div class="col-4" *ngIf="pr.carril3 !== undefined ">
+            <div class="row" *ngFor="let item of pr.carril3" >
+                <p *ngFor="let alumno of item.alumnos" class="text" [ngClass]="{'bg-warning': clasificarAlumnoPreescolar(alumno.seccion), 'bg-danger': clasificarAlumnoPrimaria(alumno.seccion),  'bg-success': clasificarAlumnoBachillerato(alumno.seccion)}">
+                    {{alumno.nombre}} {{alumno.seccion}}
+                    
+                </p>
+            </div>
+            
+        </div>
+    </div> -->
+
+</div>       

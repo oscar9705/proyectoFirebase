@@ -10,7 +10,7 @@ export class LlegadaService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getLlegadas(): Observable<any[]>{
+  getLlegadas( ): Observable<any[]>{
     return this.firestore.collection('recogidas').snapshotChanges()
                 .pipe(
                   map(resp => resp.map(res => res.payload))
